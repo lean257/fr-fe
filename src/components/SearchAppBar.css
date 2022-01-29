@@ -1,0 +1,17 @@
+.search {
+  position: relative;
+  border-radius: 5px;
+  background-color: wheat;
+}
+.search-icon-wrapper {
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #424242;
+}
+.input-base {
+  color: "#424242";
+  width: 100%;
+}

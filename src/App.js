@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MovieGrid />} />
         <Route path="/movie/:movieId" element={<MovieCard />} />
+        <Route path="/search" />
       </Routes>
     </Router>
   );

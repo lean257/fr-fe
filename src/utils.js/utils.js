@@ -16,7 +16,7 @@ export function findMoviesByGenres(movies) {
   return collection;
 }
 
-export async function fetchAllMovies(url) {
+export async function fetchData(url) {
   const result = await fetch(url, {
     headers: {
       Authorization: "Bearer Wookie2019",
