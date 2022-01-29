@@ -1,7 +1,6 @@
 .card {
   display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin: 40px 10px 0 20px;
 }
 .media {
   height: 450;
@@ -18,4 +17,8 @@
 }
 .section {
   margin-top: 2px;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
 }

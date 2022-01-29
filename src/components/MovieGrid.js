@@ -16,8 +16,8 @@ export default function MovieGrid() {
     <div className="all-slides-wrapper">
       {Object.keys(moviesByGenres).map((category) => (
         <div className="slide-wrapper" key={`${category}`}>
-          <div className="slide-title">{category}</div>
-          <div className="all-cards-wrapper">
+          <h2 className="slide-title">{category}</h2>
+          <div className="all-img-wrapper">
             {moviesByGenres[category].map((cardItem) => (
               <Link
                 to={`/movie/${cardItem.id}`}

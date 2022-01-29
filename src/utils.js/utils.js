@@ -15,10 +15,12 @@ export function findMoviesByGenres(movies) {
   );
   return collection;
 }
-export function fetchAllMovies(url) {
-  return fetch(url, {
+
+export async function fetchAllMovies(url) {
+  const result = await fetch(url, {
     headers: {
       Authorization: "Bearer Wookie2019",
     },
-  }).then((res) => res.json());
+  });
+  return await result.json();
 }
