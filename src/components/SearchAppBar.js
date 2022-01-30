@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -6,14 +6,15 @@ import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import debounce from "lodash/debounce";
+import { Link, useNavigate } from "react-router-dom";
+import { debounce } from "lodash";
+import { useCallback } from "react";
 
 export default function SearchAppBar() {
-  const [movies, setMovies] = useState([]);
+  const [, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
-  const getMovieRequest = async (searchValue) => {
+  const getMovieRequest = async () => {
     const url = `https://wookie.codesubmit.io/movies?q=${searchValue}`;
 
     const response = await fetch(url, {
@@ -25,15 +26,29 @@ export default function SearchAppBar() {
     if (responseJson.movies.length > 0) {
       setMovies(responseJson.movies);
       navigate("/movies", { state: { searchResult: responseJson.movies } });
+    } else {
+      navigate("/", { state: { searchResult: [] } });
     }
   };
-  useEffect(() => {
-    if (searchValue !== "") {
-      getMovieRequest(searchValue);
-    } else {
+
+  const delayRequest = useCallback(debounce(getMovieRequest, 500), [
+    searchValue,
+  ]);
+
+  const onChange = async (e) => {
+    if (e.target.value === "") {
       navigate("/");
+    } else {
+      setSearchValue(e.target.value);
     }
-  }, [searchValue]);
+  };
+
+  useEffect(() => {
+    delayRequest();
+    // Cancel the debounce on useEffect cleanup.
+    return delayRequest.cancel;
+  }, [delayRequest, searchValue]);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position={"sticky"} color="default">
@@ -58,7 +73,7 @@ export default function SearchAppBar() {
                 </IconButton>
               ),
             }}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={onChange}
           />
         </Toolbar>
       </AppBar>
