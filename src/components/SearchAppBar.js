@@ -17,17 +17,20 @@ export default function SearchAppBar() {
   const getMovieRequest = async () => {
     const url = `https://wookie.codesubmit.io/movies?q=${searchValue}`;
 
-    const response = await fetch(url, {
-      headers: {
-        Authorization: "Bearer Wookie2019",
-      },
-    });
-    const responseJson = await response.json();
-    if (responseJson.movies.length > 0) {
-      setMovies(responseJson.movies);
-      navigate("/movies", { state: { searchResult: responseJson.movies } });
-    } else {
-      navigate("/", { state: { searchResult: [] } });
+    if (searchValue !== "") {
+      const response = await fetch(url, {
+        headers: {
+          Authorization: "Bearer Wookie2019",
+        },
+      });
+
+      const responseJson = await response.json();
+      if (responseJson.movies.length > 0) {
+        setMovies(responseJson.movies);
+        navigate("/movies", { state: { searchResult: responseJson.movies } });
+      } else {
+        navigate("/", { state: { searchResult: 0 } });
+      }
     }
   };
 

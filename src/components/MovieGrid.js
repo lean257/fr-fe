@@ -19,7 +19,7 @@ export default function MovieGrid() {
 
   return (
     <div className="all-slides-wrapper">
-      {searchResult?.length === 0 && <div>No result found</div>}
+      {searchResult === 0 && <div>No result found</div>}
       {Object.keys(moviesByGenres).map((category) => (
         <div className="slide-wrapper" key={`${category}`}>
           <h2 className="slide-title">{category}</h2>

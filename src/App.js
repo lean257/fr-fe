@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<MovieGrid />} />
         <Route path="/movies" element={<SearchResult />} />
         <Route path="/movies/:movieId" element={<MovieCard />} />
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
