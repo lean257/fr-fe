@@ -1,6 +1,7 @@
 # About
 
 This app shows a database of movies that is searchable.
+This app is deployed in [heroku](https://fr-fe.herokuapp.com/)
 
 ## To start
 
