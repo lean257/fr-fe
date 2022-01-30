@@ -7,7 +7,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { fetchData } from "../utils.js/utils";
 import debounce from "lodash/debounce";
 
 export default function SearchAppBar() {
