@@ -1,5 +1,5 @@
 .all-slides-wrapper {
-  padding: 80px 50px;
+  padding: 30px 50px;
   display: flex;
   flex-direction: column;
   background-color: lightgray;
@@ -21,28 +21,8 @@
   }
 }
 
-.all-img-wrapper {
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
-}
-
 @media (max-width: 650px) {
   .all-cards-wrapper {
     flex-direction: column;
   }
-}
-
-.card-wrapper:hover {
-  transform: scale(1.2);
-}
-
-.card-image {
-  border: 0;
-  cursor: pointer;
-  padding: 0 5px;
-  width: 180px;
-  height: 140px;
-  object-fit: cover;
-  vertical-align: middle;
 }

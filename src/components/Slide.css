@@ -1,0 +1,18 @@
+.all-img-wrapper {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  margin-top: 20px;
+}
+.card-wrapper:hover {
+  transform: scale(1.2);
+}
+.card-image {
+  border: 0;
+  cursor: pointer;
+  padding: 0 5px;
+  width: 180px;
+  height: 140px;
+  object-fit: cover;
+  vertical-align: middle;
+}
